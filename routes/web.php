@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/question', function () {
-    return view('question.index');
+    return view('question.show');
 });
 
 Route::get('/question/create', function () {

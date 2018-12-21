@@ -14,6 +14,10 @@
     width: 50px;
 }
 
+.img-80{
+    width: 80px;
+}
+
 .content {
     color: #8b8a8a;
 }
@@ -62,4 +66,9 @@ a.topic:hover {
 .font-b{
     font-size: 18px;
     font-weight: bold;
+}
+
+.btn-color-green{
+    border-color: #00B5AD !important;
+    color: #00B5AD !important;
 }

@@ -182,8 +182,9 @@ div.edui-box {
 
 .edui-default .edui-editor-iframeholder {
     position: relative;
+    height: 200px !important;
     /*for fix ie6 toolbarmsg under iframe bug. relative -> static */
-    /*_position: static !important;*
+    /*_position: static !important;*/
 }
 
 .edui-default .edui-editor-iframeholder textarea {
@@ -432,10 +433,10 @@ div.edui-box {
 
 .edui-default .edui-toolbar .edui-combox-body .edui-arrow {
    /*
-   
+
     向下的箭头，我自己注释掉了
-    */ 
-   
+    */
+
    /*background: url(../images/icons.png) -741px 0;
     _background: url(../images/icons.gif) -741px 0;*/
     height: 20px;
