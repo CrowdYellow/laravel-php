@@ -63,6 +63,13 @@ return [
             'bucket' => env('AWS_BUCKET'),
         ],
 
+        'edit' => [
+            'driver' => 'local',
+            'root' => public_path(),
+            'url' => '/',
+            'visibility' => 'public',
+        ],
+
     ],
 
 ];

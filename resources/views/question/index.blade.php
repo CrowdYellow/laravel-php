@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+    @include('vendor.ueditor.assets')
     {{--内容区域 start--}}
     <div class="container">
         <div class="row">
@@ -47,6 +47,7 @@
                 {{--编辑回答 start--}}
                 <div class="panel panel-default">
                     <div class="panel-body">
+                        <script id="container" name="body" type="text/plain"></script>
                     </div>
                 </div>
                 {{--编辑回答 end--}}
@@ -91,4 +92,21 @@
         </div>
     </div>
     {{--内容区域 end--}}
+
+    <script type="text/javascript">
+        var ue = UE.getEditor('container', {
+            toolbars: [
+                ['bold', 'italic', 'underline', 'strikethrough', 'blockquote', 'insertunorderedlist', 'insertorderedlist', 'justifyleft','justifycenter', 'justifyright',  'link', 'insertimage', 'fullscreen']
+            ],
+            elementPathEnabled: false,
+            enableContextMenu: false,
+            autoClearEmptyNode:true,
+            wordCount:false,
+            imagePopup:false,
+            autotypeset:{ indent: true,imageBlockLine: 'center' }
+        });
+        ue.ready(function() {
+            ue.execCommand('serverparam', '_token', '{{ csrf_token() }}'); // 设置 CSRF token.
+        });
+    </script>
 @endsection
