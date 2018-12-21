@@ -64,11 +64,25 @@ a.topic:hover {
 }
 
 .font-b{
-    font-size: 18px;
     font-weight: bold;
 }
 
 .btn-color-green{
     border-color: #00B5AD !important;
     color: #00B5AD !important;
+}
+
+.drop-down{
+    border: 0 !important;
+    padding: 0 !important;
+}
+
+.drop-down > li{
+    border-bottom: 1px solid #ddd;
+}
+
+.drop-down > li > a {
+    font-size: 16px;
+    padding: 6px 0 !important;
+    line-height: 2 !important;
 }
