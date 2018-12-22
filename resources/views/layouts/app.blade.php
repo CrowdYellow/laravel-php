@@ -36,7 +36,7 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li><a href="{{url('/question')}}">问答</a></li>
+                        <li><a href="{{url('/questions')}}">问答</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -58,10 +58,11 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre><i class="fa fa-pencil"></i></a>
                                 <ul class="dropdown-menu">
                                     <li class="list-group-item">
-                                        <a href="{{url('/question/create')}}"><i class="fa fa-question-circle-o"></i> 提个问题</a>
+                                        <a href="{{url('/questions/create')}}"><i class="fa fa-question-circle-o"></i> 提个问题</a>
                                     </li>
                                 </ul>
                             </li>
+                            <li class="dropdown"><a href="{{url('/notification')}}"><span class="badge badge-fade popover-with-html" data-content="消息提醒" id="notification-count" data-original-title="" title="">0</span></a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                                     {{ user()->name }} <span class="caret"></span>
@@ -69,7 +70,7 @@
                                 <ul class="dropdown-menu">
                                     <li class="list-group-item"><a href="#"><i class="fa fa-newspaper-o"></i> 我的博客</a></li>
                                     <li class="list-group-item"><a href="#"><i class="fa fa-heart"></i> 我的收藏</a></li>
-                                    <li class="list-group-item"><a href="#"><i class="fa fa-user"></i> 个人中心</a></li>
+                                    <li class="list-group-item"><a href="{{url('/users/1')}}"><i class="fa fa-user"></i> 个人中心</a></li>
                                     <li class="list-group-item"><a href="#"><i class="fa fa-cog"></i> 编辑资料</a></li>
                                     <li class="list-group-item">
                                         <a href="{{ route('logout') }}"

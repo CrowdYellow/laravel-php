@@ -22,6 +22,10 @@
     color: #8b8a8a;
 }
 
+.content:hover{
+    text-decoration: none !important;
+}
+
 .list-group-item {
     position: relative;
     display: block;
@@ -89,4 +93,40 @@ a.topic:hover {
     font-family: Microsoft YaHei UI Light !important;
     font-weight: bold !important;
     color: #3097D1 !important;
+}
+
+.badge{
+    background-color: #EBE8E8 !important;
+}
+
+.user-basic-info{
+    color: #3097D1 !important;
+    font-size: 25px !important;
+}
+
+.btn-color-blue{
+    background-color: #3097D1 !important;
+    color: #fff !important;
+}
+
+.margin-top-15{
+    margin-top: 15px !important;
+}
+
+.list-group .list-group-item {
+    border: none !important;
+    margin-bottom: 0 !important;
+    border-bottom: 1px solid #f2f2f2 !important;
+}
+
+.box {
+    background-color: #fff;
+    padding: 10px;
+    margin: 0 0 20px 0;
+    -webkit-box-shadow: 0 0.2em 0 0 #ddd, 0 0 0 1px #ddd;
+    box-shadow: 0 0.2em 0 0 #ddd, 0 0 0 1px #ddd;
+}
+
+.padding-md {
+    padding: 15px;
 }

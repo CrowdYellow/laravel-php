@@ -10,27 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/question', function () {
-    return view('question.index');
-});
-
-Route::get('/question/create', function () {
-    return view('question.create');
-});
-
-Route::get('/question/edit', function () {
-    return view('question.edit');
-});
-
-Route::get('/question/show', function () {
-    return view('question.show');
-});
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/', 'HomeController@index');
+
+//问答区
+Route::resource('/questions', 'Home\QuestionController');
+
+//用户区
+Route::resource('/users', 'Home\UserController');

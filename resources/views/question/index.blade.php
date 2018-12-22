@@ -33,28 +33,10 @@
                                     <i class="fa fa-file-text-o"></i>
                                     <a href="#">Taylor Swift</a>
                                     发布了文章
-                                    <a href="#">精彩视频，就在黄瓜app</a>
+                                    <a href="{{url('questions/1')}}">精彩视频，就在黄瓜app</a>
                                 </div>
                                 <div class="media-body padding-tb-0">
-                                    <p>我倒是觉得快速开发、方便拓展是最重要的，过度设计和过度优化是万恶之源，等遇到瓶颈先加机器配置，再优化也来得及，还有电商整个流程最浪费性能的绝不是订单查询</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="media list-group-item border-bottom">
-                            <div class="media-left">
-                                <a href="#">
-                                    <img class="media-object img-thumbnail img-circle img-50" src="{{asset('images/user/lv.jpg')}}" alt="...">
-                                </a>
-                            </div>
-                            <div class="media-body">
-                                <div class="media-heading">
-                                    <i class="fa fa-file-text-o"></i>
-                                    <a href="#">Taylor Swift</a>
-                                    发布了文章
-                                    <a href="#">精彩视频，就在黄瓜app</a>
-                                </div>
-                                <div class="media-body padding-tb-0">
-                                    <p>我倒是觉得快速开发、方便拓展是最重要的，过度设计和过度优化是万恶之源，等遇到瓶颈先加机器配置，再优化也来得及，还有电商整个流程最浪费性能的绝不是订单查询</p>
+                                    <a class="content" href="{{url('questions/1')}}">我倒是觉得快速开发、方便拓展是最重要的，过度设计和过度优化是万恶之源，等遇到瓶颈先加机器配置，再优化也来得及，还有电商整个流程最浪费性能的绝不是订单查询</a>
                                 </div>
                             </div>
                         </div>

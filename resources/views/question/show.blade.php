@@ -20,7 +20,7 @@
 
                     <div class="panel-body"><p>有哪些典型的学生思维？有哪些典型的学生思维？</p></div>
                     <div class="panel-footer-set">
-                        <a href="#">编辑</a>
+                        <a href="{{url('question/1/edit')}}">编辑</a>
                         <a href="#">删除</a>
                     </div>
                 </div>
@@ -82,9 +82,9 @@
                                     <div class="col-md-4">关注</div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">0</div>
-                                    <div class="col-md-4">0</div>
-                                    <div class="col-md-4">0</div>
+                                    <div class="col-md-4 user-basic-info">0</div>
+                                    <div class="col-md-4 user-basic-info">0</div>
+                                    <div class="col-md-4 user-basic-info">0</div>
                                 </div>
                             </div>
                             <div class="media-bottom padding-tb-0">
