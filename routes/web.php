@@ -14,10 +14,16 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'Home\QuestionController@index');
+
+//邮箱验证
+Route::get('email/verify/{token}', ['as' => 'email.verify', 'uses' => 'Home\EmailController@verify']);
 
 //问答区
-Route::resource('/questions', 'Home\QuestionController');
+Route::resource('/questions','Home\QuestionController', ['name' => [
+    'create' => 'questions.create',
+    'show' => 'questions.show'
+]]);
 
 //用户区
 Route::resource('/users', 'Home\UserController');

@@ -11,17 +11,22 @@
                 <div class="panel panel-default">
                     <div class="panel-heading border-hide">
                         <i class="fa fa-tags"></i>
-                        <a href="#" class="topic">健身</a>
-                        <a href="#" class="topic">生活</a>
+                        @foreach($question->topics as $topic)
+                            <a href="{{url('/topic/'.$topic->id)}}" class="topic">{{$topic->name}}</a>
+                        @endforeach
                     </div>
-                    <div class="panel-heading font-b">
-                        厉害的人是怎么分析问题的？
-                    </div>
+                    <div class="panel-heading font-b">{{$question->title}}</div>
 
-                    <div class="panel-body"><p>有哪些典型的学生思维？有哪些典型的学生思维？</p></div>
+                    <div class="panel-body"><p>{!! $question->title !!}</p></div>
                     <div class="panel-footer-set">
-                        <a href="{{url('question/1/edit')}}">编辑</a>
-                        <a href="#">删除</a>
+                        @if(Auth::check() && user()->owns($question))
+                            <a href="{{url('/question/'.$question->id.'/edit')}}">编辑</a>
+                            <form action="{{url('/question/'.$question->id)}}" method="POST" class="delete-form">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
+                                <button class="button is-naked delete-button">删除</button>
+                            </form>
+                        @endif
                     </div>
                 </div>
                 {{--问题区域 end--}}

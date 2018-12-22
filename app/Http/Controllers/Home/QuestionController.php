@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Http\Requests\QuestionRequestion;
+use App\Repositories\QuestionRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class QuestionController extends Controller
 {
+    protected $questionRepository;
+
+    public function __construct(QuestionRepository $questionRepository)
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+        $this->questionRepository = $questionRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -33,9 +43,20 @@ class QuestionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(QuestionRequestion $request)
     {
-        //
+        $topics = $this->questionRepository->normalizeTopic($request->get('topics'));
+
+        $data = [
+            'title' => $request->get('title'),
+            'body' => $request->get('body'),
+            'user_id' => user()->id
+        ];
+
+        $question = $this->questionRepository->create($data);
+
+        $question->topics()->attach($topics);
+        return redirect()->route('questions.show', [$question->id]);
     }
 
     /**
@@ -46,7 +67,9 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-        return view('question.show');
+        $question = $this->questionRepository->byId($id);
+
+        return view('question.show', compact('question'));
     }
 
     /**

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
+@include('vendor.ueditor.assets')
 @section('content')
-    @include('vendor.ueditor.assets')
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -9,7 +9,7 @@
                     <div class="panel-heading">发布问题</div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" action="{{url('/question')}}" method="post">
+                        <form class="form-horizontal" action="{{url('/questions')}}" method="post">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -31,8 +31,6 @@
 
                                 <div class="col-md-11">
                                     <select class="js-example-placeholder-multiple js-data-example-ajax form-control" name="topics[]" multiple="multiple">
-                                        <option value="AL">Alabama</option>
-                                        <option value="WY">Wyoming</option>
                                     </select>
                                 </div>
                             </div>
@@ -41,9 +39,7 @@
                                 <label for="body" class="col-md-1 control-label">内容</label>
 
                                 <div class="col-md-11">
-                                    <script id="container" name="body" type="text/plain">
-                                        {!! old('body') !!}
-                                    </script>
+                                    <script id="container" name="body" type="text/plain">{!! old('body') !!}</script>
                                     @if ($errors->has('body'))
                                         <span class="help-block">
                                     <strong>{{ $errors->first('body') }}</strong>
@@ -59,6 +55,8 @@
             </div>
         </div>
     </div>
+@endsection
+
 @section('js')
     <script>
         $(document).ready(function() {
@@ -77,7 +75,7 @@
                 placeholder: '选择相关话题',
                 minimumInputLength: 2,
                 ajax: {
-                    url: '/api/topic',
+                    url: '/api/topics',
                     dataType: 'json',
                     delay: 250,
                     data: function (params) {
@@ -112,5 +110,4 @@
             ue.execCommand('serverparam', '_token', '{{ csrf_token() }}'); // 设置 CSRF token.
         });
     </script>
-@endsection
 @endsection
