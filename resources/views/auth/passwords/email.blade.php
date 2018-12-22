@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-4 col-md-offset-4">
             <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
+                <div class="panel-heading">重置密码</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -18,9 +18,9 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-2 control-label">邮箱</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-9">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
@@ -32,10 +32,8 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Send Password Reset Link
-                                </button>
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-primary btn-block">发送邮件</button>
                             </div>
                         </div>
                     </form>

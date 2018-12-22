@@ -62,7 +62,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'photos' => "/images/default.jpg",
@@ -70,5 +70,14 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'api_token' => str_random(60),
         ]);
+
+        $this->sendVerifyEmailTo($user);
+
+        return $user;
+    }
+
+    protected function sendVerifyEmailTo($user)
+    {
+
     }
 }
