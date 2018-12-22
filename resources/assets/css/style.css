@@ -86,3 +86,9 @@ a.topic:hover {
     padding: 6px 0 !important;
     line-height: 2 !important;
 }
+
+.navbar-default {
+    background-color: #fff;
+    border-color: #d3e0e9;
+    border-top: 4px solid #3097d1 !important;
+}
