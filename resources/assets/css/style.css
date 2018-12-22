@@ -72,23 +72,21 @@ a.topic:hover {
     color: #00B5AD !important;
 }
 
-.drop-down{
-    border: 0 !important;
-    padding: 0 !important;
-}
-
-.drop-down > li{
-    border-bottom: 1px solid #ddd;
-}
-
-.drop-down > li > a {
-    font-size: 16px;
-    padding: 6px 0 !important;
-    line-height: 2 !important;
-}
-
 .navbar-default {
     background-color: #fff;
     border-color: #d3e0e9;
-    border-top: 4px solid #3097d1 !important;
+    border-top: 4px solid #3097D1 !important;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    color: #3097D1 !important;
+    background-color: #fff !important;
+    text-decoration: none;
+}
+
+.web-title{
+    font-size: 25px !important;
+    font-family: Microsoft YaHei UI Light !important;
+    font-weight: bold !important;
+    color: #3097D1 !important;
 }
