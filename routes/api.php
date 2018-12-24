@@ -17,4 +17,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//话题
 Route::middleware('api')->get('/topics', 'TopicController@topics');
+
+//关注问题
+Route::middleware('auth:api')->post('/question/follower', 'QuestionFollowerController@follower');
+Route::middleware('auth:api')->post('/question/follow', 'QuestionFollowerController@follow');

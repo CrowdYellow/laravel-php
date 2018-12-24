@@ -55,23 +55,6 @@
                     </div>
                 </div>
                 @endforeach
-                {{--<div class="panel panel-default">--}}
-                    {{--<div class="panel-heading">{{$question->answers_count}}个回答</div>--}}
-                    {{--@foreach($question->answers as $answer)--}}
-                    {{--<div class="panel-body">--}}
-                        {{--<div class="media">--}}
-                            {{--<div class="media-left">--}}
-                                {{--<button class="btn btn-default">0</button>--}}
-                            {{--</div>--}}
-                            {{--<div class="media-body">--}}
-                                {{--<h4 class="media-heading"><a href="#">{{ $answer->user->name }}</a></h4>--}}
-                                {{--<div class="media-body">{!! $answer->body !!}</div>--}}
-                            {{--</div>--}}
-                            {{--<div class="media-bottom"><a href="#">0评论</a></div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                    {{--@endforeach--}}
-                {{--</div>--}}
                 {{--回答区域 end--}}
 
                 {{--编辑回答 start--}}
@@ -134,7 +117,7 @@
                     <div class="panel-heading text-center"><h2>1</h2> <span>关注者</span></div>
                     <div class="panel-body">
                         @if(Auth::check() && !user()->owns($question))
-                        <button class="btn btn-default"><i class="fa fa-heart"></i> 关注该问题</button>
+                            <question-follow-button question="{{$question->id}}" user="{{user()->id}}"></question-follow-button>
                         @endif
                         <a href="#editor" class="btn btn-primary pull-right"><i class="fa fa-pencil"></i> 撰写答案</a>
                     </div>
