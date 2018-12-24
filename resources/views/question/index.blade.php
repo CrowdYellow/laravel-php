@@ -72,17 +72,15 @@
                         <div class="media">
                             <div class="media-left">
                                 <a href="#">
-                                    <img class="media-object img-thumbnail img-circle img-50" alt="Taylor Swift" src="{{asset('images/user/TaylorSwift.jpg')}}">
+                                    <img class="media-object img-thumbnail img-circle img-50" alt="Taylor Swift" src="{{asset(user()->photos)}}">
                                 </a>
                             </div>
                             <div class="media-body">
                                 <div class="media-heading">
-                                    <a href="#" class="font-b">Taylor Swift</a>
+                                    <a href="#" class="font-b">{{user()->name}}</a>
                                     <i class="fa fa-edit"></i>
                                 </div>
-                                <div class="media-body">
-                                    123@qwe
-                                </div>
+                                <div class="media-body">{{user()->email}}</div>
                             </div>
                         </div>
                     </div>

@@ -119,6 +119,15 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $question = $this->questionRepository->byId($id);
+
+        if (user()->owns($question)) {
+            $question->delete();
+            $question->answers()->delete();
+            $question->user()->decrement('questions_count');
+            $question->questionTopic()->delete();
+            return redirect('/');
+        }
+        abort(403, 'Forbidden'); // return back();
     }
 }
