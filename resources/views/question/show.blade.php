@@ -20,8 +20,8 @@
                     <div class="panel-body"><p>{!! $question->body !!}</p></div>
                     <div class="panel-footer-set">
                         @if(Auth::check() && user()->owns($question))
-                            <a href="{{url('/question/'.$question->id.'/edit')}}">编辑</a>
-                            <form action="{{url('/question/'.$question->id)}}" method="POST" class="delete-form">
+                            <a href="{{url('/questions/'.$question->id.'/edit')}}">编辑</a>
+                            <form action="{{url('/questions/'.$question->id)}}" method="POST" class="delete-form">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
                                 <button class="button is-naked delete-button">删除</button>

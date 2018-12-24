@@ -6,17 +6,18 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">发布问题</div>
+                    <div class="panel-heading">编辑问题</div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" action="{{url('/question')}}" method="post">
-                            {{ csrf_field() }}
+                        <form class="form-horizontal" action="{{url('/questions/'.$question->id)}}" method="post">
+                            {{method_field('PUT')}}
+                            {{csrf_field()}}
 
                             <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                                 <label for="title" class="col-md-1 control-label">标题</label>
 
                                 <div class="col-md-11">
-                                    <input type="text" class="form-control" name="title" value="{{ old('title') }}">
+                                    <input type="text" class="form-control" name="title" value="{{ $question->title }}">
 
                                     @if ($errors->has('title'))
                                         <span class="help-block">
@@ -31,8 +32,9 @@
 
                                 <div class="col-md-11">
                                     <select class="js-example-placeholder-multiple js-data-example-ajax form-control" name="topics[]" multiple="multiple">
-                                        <option value="AL">Alabama</option>
-                                        <option value="WY">Wyoming</option>
+                                        @foreach($question->topics as $topic)
+                                            <option value="{{ $topic->id }}" selected="selected">{{ $topic->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -41,9 +43,7 @@
                                 <label for="body" class="col-md-1 control-label">内容</label>
 
                                 <div class="col-md-11">
-                                    <script id="container" name="body" type="text/plain">
-                                        {!! old('body') !!}
-                                    </script>
+                                    <script id="container" name="body" type="text/plain">{!! $question->body !!}</script>
                                     @if ($errors->has('body'))
                                         <span class="help-block">
                                     <strong>{{ $errors->first('body') }}</strong>
@@ -52,13 +52,15 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn-success pull-right" type="submit">发布问题</button>
+                            <button class="btn btn-success pull-right" type="submit">编辑问题</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
 @section('js')
     <script>
         $(document).ready(function() {
@@ -77,7 +79,7 @@
                 placeholder: '选择相关话题',
                 minimumInputLength: 2,
                 ajax: {
-                    url: '/api/topic',
+                    url: '/api/topics',
                     dataType: 'json',
                     delay: 250,
                     data: function (params) {
@@ -112,5 +114,4 @@
             ue.execCommand('serverparam', '_token', '{{ csrf_token() }}'); // 设置 CSRF token.
         });
     </script>
-@endsection
 @endsection

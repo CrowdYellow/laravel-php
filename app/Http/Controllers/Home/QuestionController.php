@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Requests\QuestionRequest;
 use App\Repositories\QuestionRepository;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class QuestionController extends Controller
@@ -83,7 +82,12 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        return view('question.edit');
+        $question = $this->questionRepository->byId($id);
+
+        if ( user()->owns($question) ) {
+            return view('question.edit', compact('question'));
+        }
+        return back();
     }
 
     /**
@@ -93,9 +97,18 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(QuestionRequest $request, $id)
     {
-        //
+        $question = $this->questionRepository->byId($id);
+
+        $topics = $this->questionRepository->normalizeTopic($request->get('topics'));
+
+        $question->update([
+            'title' => $request->get('title'),
+            'body'  => $request->get('body'),
+        ]);
+        $question->topics()->sync($topics);
+        return redirect()->route('questions.show', [$question->id]);
     }
 
     /**
