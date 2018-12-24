@@ -24,7 +24,8 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        return view('question.index');
+        $questions = $this->questionRepository->getQuestionFeed();
+        return view('question.index', compact('questions'));
     }
 
     /**
@@ -54,6 +55,8 @@ class QuestionController extends Controller
         ];
 
         $question = $this->questionRepository->create($data);
+
+        $this->questionRepository->normalizeUser(user()->id);
 
         $question->topics()->attach($topics);
         return redirect()->route('questions.show', [$question->id]);

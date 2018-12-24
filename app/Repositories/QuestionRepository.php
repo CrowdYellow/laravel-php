@@ -11,9 +11,14 @@ namespace App\Repositories;
 
 use App\Model\Question;
 use App\Model\Topic;
+use App\User;
 
 class QuestionRepository
 {
+    public function getQuestionFeed()
+    {
+        return Question::published()->latest('updated_at')->with('user')->get();
+    }
     /**
      * 创建问题
      *
@@ -23,6 +28,11 @@ class QuestionRepository
     public function create(array $array)
     {
         return Question::create($array);
+    }
+
+    public function normalizeUser($id)
+    {
+        return User::find($id)->increment('questions_count');
     }
 
     /**
@@ -41,7 +51,7 @@ class QuestionRepository
                 return (int) $topic;
             }
             //不是数字则添加
-            $newTopic = Topic::create(['name' => $topic, 'question_count' => 1]);
+            $newTopic = Topic::create(['name' => trim($topic), 'question_count' => 1]);
 
             return $newTopic->id;
         });

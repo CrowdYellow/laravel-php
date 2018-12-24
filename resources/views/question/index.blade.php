@@ -22,24 +22,23 @@
                     </div>
 
                     <div class="panel-body content">
+                        @foreach($questions as $question)
                         <div class="media list-group-item border-bottom">
                             <div class="media-left">
                                 <a href="#">
-                                    <img class="media-object img-thumbnail img-circle img-50" src="{{asset('images/user/lv.jpg')}}" alt="...">
+                                    <img class="media-object img-thumbnail img-circle img-50" src="{{asset($question->user->photos)}}" alt="...">
                                 </a>
                             </div>
                             <div class="media-body">
-                                <div class="media-heading">
-                                    <i class="fa fa-file-text-o"></i>
-                                    <a href="#">Taylor Swift</a>
-                                    发布了文章
-                                    <a href="{{url('questions/1')}}">精彩视频，就在黄瓜app</a>
-                                </div>
                                 <div class="media-body padding-tb-0">
-                                    <a class="content" href="{{url('questions/1')}}">我倒是觉得快速开发、方便拓展是最重要的，过度设计和过度优化是万恶之源，等遇到瓶颈先加机器配置，再优化也来得及，还有电商整个流程最浪费性能的绝不是订单查询</a>
+                                    <i class="fa fa-question-circle-o"></i>
+                                    <a href="#">{{$question->user->name}}</a>
+                                    发布了问题
+                                    <a href="{{url('questions/'.$question->id)}}">{{$question->title}}</a>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                         <div class="pull-right">
                             <nav aria-label="...">
                                 <ul class="pagination">
