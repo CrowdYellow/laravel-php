@@ -30,11 +30,6 @@ class QuestionRepository
         return Question::create($array);
     }
 
-    public function normalizeUser($id)
-    {
-        return User::find($id)->increment('questions_count');
-    }
-
     /**
      * 话题设置
      *

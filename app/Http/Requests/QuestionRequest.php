@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class QuestionRequestion extends FormRequest
+class QuestionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -16,11 +16,6 @@ class QuestionRequestion extends FormRequest
         return true;
     }
 
-    /**
-     * 返回消息
-     *
-     * @return array
-     */
     public function messages()
     {
         return [

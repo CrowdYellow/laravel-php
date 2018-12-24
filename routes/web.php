@@ -25,5 +25,8 @@ Route::resource('/questions','Home\QuestionController', ['name' => [
     'show' => 'questions.show'
 ]]);
 
+//回答
+Route::post('questions/{question}/answer', 'Home\AnswerController@store');
+
 //用户区
 Route::resource('/users', 'Home\UserController');

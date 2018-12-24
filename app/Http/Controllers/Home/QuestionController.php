@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
-use App\Http\Requests\QuestionRequestion;
+use App\Http\Requests\QuestionRequest;
 use App\Repositories\QuestionRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -44,7 +44,7 @@ class QuestionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(QuestionRequestion $request)
+    public function store(QuestionRequest $request)
     {
         $topics = $this->questionRepository->normalizeTopic($request->get('topics'));
 
@@ -56,7 +56,7 @@ class QuestionController extends Controller
 
         $question = $this->questionRepository->create($data);
 
-        $this->questionRepository->normalizeUser(user()->id);
+        $question->user()->increment('questions_count');
 
         $question->topics()->attach($topics);
         return redirect()->route('questions.show', [$question->id]);

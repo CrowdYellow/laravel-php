@@ -34,6 +34,29 @@
                 {{--回答区域 start--}}
                 <div class="panel panel-default">
                     <div class="panel-heading">{{$question->answers_count}}个回答</div>
+                </div>
+                @foreach($question->answers as $answer)
+                <div class="col-md-1">
+                    <img width="40" class="img-thumbnail img-circle" src="{{ $answer->user->photos }}" alt="{{ $answer->user->name }}">
+                </div>
+
+                <div class="panel panel-default col-md-offset-1 triangle">
+                    <div class="panel-heading"><h4 class="media-heading"><a href="#">{{ $answer->user->name }}</a></h4></div>
+                    <div class="panel-body">
+                        <div class="media">
+                            <div class="media-left">
+                                <button class="btn btn-default">0</button>
+                            </div>
+                            <div class="media-body">
+                                <div class="media-body">{!! $answer->body !!}</div>
+                            </div>
+                            <div class="media-bottom"><a href="#">0评论</a></div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                {{--<div class="panel panel-default">--}}
+                    {{--<div class="panel-heading">{{$question->answers_count}}个回答</div>--}}
                     {{--@foreach($question->answers as $answer)--}}
                     {{--<div class="panel-body">--}}
                         {{--<div class="media">--}}
@@ -47,15 +70,15 @@
                             {{--<div class="media-bottom"><a href="#">0评论</a></div>--}}
                         {{--</div>--}}
                     {{--</div>--}}
-                    {{--@endsection--}}
-                </div>
+                    {{--@endforeach--}}
+                {{--</div>--}}
                 {{--回答区域 end--}}
 
                 {{--编辑回答 start--}}
                 <div class="panel panel-default">
                     <div class="panel-body">
                         @if(Auth::check())
-                        <form class="form-horizontal" action="{{url('/question/')}}" method="post">
+                        <form class="form-horizontal" action="{{url('/questions/'.$question->id.'/answer')}}" method="post">
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <div class="col-md-12">

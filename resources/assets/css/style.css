@@ -160,3 +160,18 @@ a.topic:hover {
 .delete-form{
     display: inline-block;
 }
+
+.triangle:before {
+    position: absolute;
+    right: 100%;
+    left: 69px;
+    display: block;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    content: " ";
+    border-color: transparent;
+    border-style: solid solid outset;
+    border-width: 8px;
+    border-right-color: #d4e0e8;
+}
