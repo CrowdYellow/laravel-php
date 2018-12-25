@@ -23,3 +23,7 @@ Route::middleware('api')->get('/topics', 'TopicController@topics');
 //关注问题
 Route::middleware('auth:api')->post('/question/follower', 'QuestionFollowerController@follower');
 Route::middleware('auth:api')->post('/question/follow', 'QuestionFollowerController@follow');
+
+//关注用户
+Route::middleware('auth:api')->get('/user/{id}/follower', 'UserFollowerController@index');
+Route::middleware('auth:api')->post('/user/follow', 'UserFollowerController@follow');

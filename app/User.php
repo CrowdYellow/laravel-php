@@ -76,4 +76,33 @@ class User extends Authenticatable
     {
         return !! $this->follows()->where('question_id', $question)->count();
     }
+
+    /**
+     * 用户之间的关注
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function followers()
+    {
+        return $this->belongsToMany(self::class, 'user_follower', 'follower_id', 'followed_id')->withTimestamps();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function followersUser()
+    {
+        return $this->belongsToMany(self::class, 'user_follower', 'followed_id', 'follower_id')->withTimestamps();
+    }
+
+    /**
+     * 判断用户是否已关注该用户
+     *
+     * @param $user
+     * @return array
+     */
+    public function followThisUser($user)
+    {
+        return $this->followers()->toggle($user);
+    }
 }

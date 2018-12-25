@@ -106,7 +106,7 @@
                             </div>
                             @if(Auth::check() && !user()->owns($question))
                             <div class="media-bottom padding-tb-0">
-                                <button class="btn btn-block btn-default btn-color-green"><i class="fa fa-plus"></i>&nbsp;&nbsp; 关注</button>
+                                <user-follow-button user="{{ $question->user->id }}"></user-follow-button>
                                 <button class="btn btn-block btn-default"><i class="fa fa-envelope"></i>&nbsp;&nbsp; 私信</button>
                             </div>
                             @endif
