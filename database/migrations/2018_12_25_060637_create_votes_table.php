@@ -4,19 +4,19 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQuestionsTopicsTable extends Migration
+class CreateVotesTable extends Migration
 {
     /**
      * Run the migrations.
-     * 问题话题关联表
+     * 问题点赞表
      * @return void
      */
     public function up()
     {
-        Schema::create('question_topic', function (Blueprint $table) {
+        Schema::create('votes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('question_id')->unsigned()->index();
-            $table->integer('topic_id')->unsigned()->index();
+            $table->unsignedInteger('user_id')->index();
+            $table->unsignedInteger('answer_id')->index();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateQuestionsTopicsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('question_topic');
+        Schema::dropIfExists('votes');
     }
 }

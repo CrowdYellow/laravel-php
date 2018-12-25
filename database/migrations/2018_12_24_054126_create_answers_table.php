@@ -8,7 +8,7 @@ class CreateAnswersTable extends Migration
 {
     /**
      * Run the migrations.
-     *
+     * 回答表
      * @return void
      */
     public function up()

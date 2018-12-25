@@ -45,7 +45,7 @@
                     <div class="panel-body">
                         <div class="media">
                             <div class="media-left">
-                                <button class="btn btn-default">0</button>
+                                <user-votes-button answer="{{$answer->id}}" count="{{$answer->votes_count}}"></user-votes-button>
                             </div>
                             <div class="media-body">
                                 <div class="media-body">{!! $answer->body !!}</div>

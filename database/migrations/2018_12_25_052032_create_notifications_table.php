@@ -8,7 +8,7 @@ class CreateNotificationsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
+     * 站内通知表
      * @return void
      */
     public function up()

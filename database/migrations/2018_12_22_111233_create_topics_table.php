@@ -8,7 +8,7 @@ class CreateTopicsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
+     * 话题表
      * @return void
      */
     public function up()

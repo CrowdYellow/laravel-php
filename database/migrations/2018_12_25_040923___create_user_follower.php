@@ -8,7 +8,7 @@ class CreateUserFollower extends Migration
 {
     /**
      * Run the migrations.
-     *
+     * 关注用户表
      * @return void
      */
     public function up()

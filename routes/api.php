@@ -27,3 +27,7 @@ Route::middleware('auth:api')->post('/question/follow', 'QuestionFollowerControl
 //关注用户
 Route::middleware('auth:api')->get('/user/{id}/follower', 'UserFollowerController@index');
 Route::middleware('auth:api')->post('/user/follow', 'UserFollowerController@follow');
+
+//问题点赞
+Route::middleware('auth:api')->post('/answer/{id}/vote/user', 'AnswerVoteController@user');
+Route::middleware('auth:api')->post('/answer/vote', 'AnswerVoteController@vote');

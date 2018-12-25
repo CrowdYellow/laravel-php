@@ -8,7 +8,7 @@ class CreateUserQuestion extends Migration
 {
     /**
      * Run the migrations.
-     *
+     * 关注问题表
      * @return void
      */
     public function up()

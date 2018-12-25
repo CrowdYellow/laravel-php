@@ -17,4 +17,9 @@ class AnswerRepository
     {
         return Answer::create($array);
     }
+
+    public function byId($id)
+    {
+        return Answer::find($id);
+    }
 }

@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Mailer\UserMailer;
+use App\Model\Answer;
 use App\Model\Question;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -96,7 +97,7 @@ class User extends Authenticatable
     }
 
     /**
-     * 判断用户是否已关注该用户
+     * 关注用户 取消关注
      *
      * @param $user
      * @return array
@@ -104,5 +105,35 @@ class User extends Authenticatable
     public function followThisUser($user)
     {
         return $this->followers()->toggle($user);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function votes()
+    {
+        return $this->belongsToMany(Answer::class, 'votes')->withTimestamps();
+    }
+
+    /**
+     * 点赞 取消点赞
+     *
+     * @param $answer
+     * @return array
+     */
+    public function voteFor($answer)
+    {
+        return $this->votes()->toggle($answer);
+    }
+
+    /**
+     * 判断用户是否已点赞该问题
+     *
+     * @param $answer
+     * @return bool
+     */
+    public function hasVotedFor($answer)
+    {
+        return !!$this->votes()->where('answer_id', $answer)->count();
     }
 }
