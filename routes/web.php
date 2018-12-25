@@ -17,7 +17,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'Home\QuestionController@index');
 
 //邮箱验证
-Route::get('email/verify/{token}', ['as' => 'email.verify', 'uses' => 'Home\EmailController@verify']);
+Route::get('/email/verify/{token}', ['as' => 'email.verify', 'uses' => 'Home\EmailController@verify']);
 
 //问答区
 Route::resource('/questions','Home\QuestionController', ['name' => [
@@ -26,11 +26,15 @@ Route::resource('/questions','Home\QuestionController', ['name' => [
 ]]);
 
 //回答
-Route::post('questions/{question}/answer', 'Home\AnswerController@store');
+Route::post('/questions/{question}/answer', 'Home\AnswerController@store');
 
 //用户区
 Route::resource('/users', 'Home\UserController');
 
 //站内信
-Route::get('notification/message', 'Home\NotificationController@message');
-Route::get('notification/notification', 'Home\NotificationController@notification');
+Route::get('/notification/message', 'Home\NotificationController@message');
+Route::get('/notification/notification', 'Home\NotificationController@notification');
+
+//发送私信
+Route::get('/message/to/{id}','Home\MessageController@index');
+Route::post('/message/store/{id}','Home\MessageController@store');

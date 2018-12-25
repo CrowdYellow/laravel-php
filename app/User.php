@@ -4,6 +4,7 @@ namespace App;
 
 use App\Mailer\UserMailer;
 use App\Model\Answer;
+use App\Model\Message;
 use App\Model\Question;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -135,5 +136,15 @@ class User extends Authenticatable
     public function hasVotedFor($answer)
     {
         return !!$this->votes()->where('answer_id', $answer)->count();
+    }
+
+    /**
+     * 发送私信
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function messages()
+    {
+        return $this->hasMany(Message::class, 'to_user_id');
     }
 }

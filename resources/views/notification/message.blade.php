@@ -37,29 +37,42 @@
 
                         <ul class="list-group row">
 
+                            @foreach($messages as $messageGroup)
                             <li class="list-group-item media " style="margin-top: 0;">
                                 <div class="pull-left">
-                                    <a href="#">
-                                        <img class="media-object img-thumbnail" alt="等车的猪" src="{{asset(user()->photos)}}" style="width:48px;height:48px;">
+                                    <a href="{{ $messageGroup->last()->toUser->id }}">
+                                        @if(user()->id == $messageGroup->last()->from_user_id)
+                                            <img width="40" class="media-object img-thumbnail" src="{{ $messageGroup->last()->toUser->photos }}">
+                                        @else
+                                            <img width="40" class="media-object img-thumbnail" src="{{ $messageGroup->last()->fromUser->photos }}">
+                                        @endif
                                     </a>
                                 </div>
 
                                 <div class="info">
-                                    <div class="media-heading">
-                                        我发送给
-                                        <a href="#">等车的猪</a>
-                                        <span class="meta">⋅ 于 ⋅ <span class="timeago" title="2018-12-25 12:55:25">6秒前</span></span>：
-                                    </div>
-                                    {{--<div class="media-heading">--}}
-                                        {{--<a href="{{url('')}}">等车的猪</a>--}}
-                                        {{--<span class="meta"> ⋅ 于 ⋅ <span>3天前</span></span>：--}}
-                                    {{--</div>--}}
+                                    @if($messageGroup->first()->fromUser->id == user()->id)
+                                        <div class="media-heading">
+                                            我发送给
+                                            <a href="{{url('/users/'.$messageGroup->first()->toUser->id)}}">{{ $messageGroup->first()->toUser->name }}</a>：
+                                        </div>
+                                    @else
+                                        <div class="media-heading">
+                                            <a href="{{url('/users/'.$messageGroup->first()->toUser->id)}}">{{ $messageGroup->first()->fromUser->name }}</a>：
+                                        </div>
+                                    @endif
 
-                                    <div class="media-body"><p>设么事</p></div>
+                                    <div class="media-body"><p>{{ $messageGroup->first()->body }}</p></div>
 
-                                    <div class="message-meta"><p><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i>查看对话</a></p></div>
+                                    <div class="message-meta"><p>
+                                            @if(user()->id == $messageGroup->last()->from_user_id)
+                                                <a href="{{'/message/to/'.$messageGroup->last()->to_user_id}}"><i class="fa fa-commenting-o"></i>查看对话</a>
+                                            @else
+                                                <a href="{{'/message/to/'.$messageGroup->last()->from_user_id}}"><i class="fa fa-commenting-o"></i>查看对话</a>
+                                            @endif
+                                        </p></div>
                                 </div>
                             </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

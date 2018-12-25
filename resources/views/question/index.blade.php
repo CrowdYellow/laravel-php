@@ -68,11 +68,12 @@
             {{--侧边栏 start--}}
             <div class="col-md-3">
                 <div class="panel panel-default">
+                    @if(Auth::check())
                     <div class="panel-body">
                         <div class="media">
                             <div class="media-left">
                                 <a href="#">
-                                    <img class="media-object img-thumbnail img-circle img-50" alt="Taylor Swift" src="{{asset(user()->photos)}}">
+                                    <img class="media-object img-thumbnail img-circle img-50" alt="{{asset(user()->name)}}" src="{{asset(user()->photos)}}">
                                 </a>
                             </div>
                             <div class="media-body">
@@ -84,6 +85,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading text-center">

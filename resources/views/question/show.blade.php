@@ -107,7 +107,7 @@
                             @if(Auth::check() && !user()->owns($question))
                             <div class="media-bottom padding-tb-0">
                                 <user-follow-button user="{{ $question->user->id }}"></user-follow-button>
-                                <button class="btn btn-block btn-default"><i class="fa fa-envelope"></i>&nbsp;&nbsp; 私信</button>
+                                <a class="btn btn-block btn-default" href="{{url('/message/to/'.$question->user->id)}}"><i class="fa fa-envelope"></i>&nbsp;&nbsp; 私信</a>
                             </div>
                             @endif
                         </div>
@@ -127,6 +127,7 @@
         </div>
     </div>
     {{--内容区域 end--}}
+@endsection
 @section('js')
     <script type="text/javascript">
         var ue = UE.getEditor('container', {
@@ -144,5 +145,4 @@
             ue.execCommand('serverparam', '_token', '{{ csrf_token() }}'); // 设置 CSRF token.
         });
     </script>
-@endsection
 @endsection
