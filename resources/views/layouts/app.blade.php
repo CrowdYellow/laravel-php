@@ -63,7 +63,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="dropdown"><a href="{{url('/notification')}}"><span class="badge badge-fade popover-with-html" data-content="消息提醒" id="notification-count" data-original-title="" title="">0</span></a></li>
+                            <li class="dropdown"><a href="{{url('/notification/message')}}"><span class="badge badge-fade popover-with-html" data-content="消息提醒" id="notification-count">0</span></a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                                     {{ user()->name }} <span class="caret"></span>

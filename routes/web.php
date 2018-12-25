@@ -30,3 +30,7 @@ Route::post('questions/{question}/answer', 'Home\AnswerController@store');
 
 //用户区
 Route::resource('/users', 'Home\UserController');
+
+//站内信
+Route::get('notification/message', 'Home\NotificationController@message');
+Route::get('notification/notification', 'Home\NotificationController@notification');
