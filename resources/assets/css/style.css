@@ -175,3 +175,7 @@ a.topic:hover {
     border-width: 8px;
     border-right-color: #d4e0e8;
 }
+
+.unread{
+    background-color: #3097d14d !important;
+}

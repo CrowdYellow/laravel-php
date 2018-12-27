@@ -38,7 +38,7 @@
                         <ul class="list-group row">
 
                             @foreach($messages as $messageGroup)
-                            <li class="list-group-item media " style="margin-top: 0;">
+                            <li class="list-group-item media {{ $messageGroup->first()->shouldAddUnreadClass() ? 'unread' : '' }}" style="margin-top: 0;">
                                 <div class="pull-left">
                                     <a href="{{ $messageGroup->last()->toUser->id }}">
                                         @if(user()->id == $messageGroup->last()->from_user_id)
@@ -81,3 +81,4 @@
         </div>
     </div>
 @endsection
+

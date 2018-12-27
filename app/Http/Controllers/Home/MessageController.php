@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Notifications\NewMessageNotification;
 use App\Repositories\MessageRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
@@ -25,6 +26,7 @@ class MessageController extends Controller
         $arr = [$id, user()->id];
         sort($arr);
         $messages = $this->messageRepository->getDialogMessagesBy($arr[0].$arr[1]);
+        $messages->markAsRead();
         return view('notification.to', compact('user', 'messages'));
     }
 
@@ -32,12 +34,13 @@ class MessageController extends Controller
     {
         $arr = [$id, user()->id];
         sort($arr);
-        $this->messageRepository->create([
+        $message = $this->messageRepository->create([
             'to_user_id'   => $id,
             'from_user_id' => user()->id,
             'body'         => request('body'),
             'dialog_id'    => (string)$arr[0].$arr[1],
         ]);
+        $message->toUser->notify(new NewMessageNotification($message));
 
         return back();
     }

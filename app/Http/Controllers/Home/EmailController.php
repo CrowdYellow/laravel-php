@@ -22,6 +22,6 @@ class EmailController extends Controller
 
         Auth::login($user);
 
-        return redirect('/home');
+        return redirect('/');
     }
 }

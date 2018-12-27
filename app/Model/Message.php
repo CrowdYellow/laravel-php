@@ -29,4 +29,55 @@ class Message extends Model
     {
         return $this->belongsTo(User::class, 'to_user_id');
     }
+
+    /**
+     * 将消息变为已读
+     */
+    public function markAsRead()
+    {
+        if(is_null($this->read_at)) {
+            $this->forceFill(['has_read' => 'T','read_at' => $this->freshTimestamp()])->save();
+        }
+    }
+
+    /**
+     * 利用 collection 将消息标记为已读
+     *
+     * @param array $models
+     * @return MessageCollection|\Illuminate\Database\Eloquent\Collection
+     */
+    public function newCollection(array $models = [])
+    {
+        return new MessageCollection($models);
+    }
+
+    /**
+     * 判断消息是否是已读
+     * @return bool
+     */
+    public function read()
+    {
+        return $this->has_read === 'T';
+    }
+
+    /**
+     * 判断消息是否是未读
+     * @return bool
+     */
+    public function unread()
+    {
+        return $this->has_read === 'F';
+    }
+
+    /**
+     * unread class
+     * @return bool
+     */
+    public function shouldAddUnreadClass()
+    {
+        if(user()->id === $this->from_user_id) {
+            return false;
+        }
+        return $this->unread();
+    }
 }
