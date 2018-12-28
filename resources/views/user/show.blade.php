@@ -10,12 +10,12 @@
                         <div class="media">
                             <div class="media-heading text-center padding-tb-0">
                                 <a href="#">
-                                    <img class="img-circle img-80" alt="Taylor Swift" src="{{asset('images/user/TaylorSwift.jpg')}}">
+                                    <img class="img-circle img-80" alt="Taylor Swift" src="{{asset($user->photos)}}">
                                 </a>
                             </div>
                             <div class="media-body text-center padding-tb-0 border-bottom">
                                 <div class="row padding-tb-0 border-bottom">
-                                    <div class="col-md-12"><a href="#">Taylor Swift</a></div>
+                                    <div class="col-md-12"><a href="#">{{$user->name}}</a></div>
                                 </div>
                                 <div class="row margin-top-15">
                                     <div class="col-md-4">回答</div>
@@ -23,9 +23,9 @@
                                     <div class="col-md-4">关注</div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4 user-basic-info">0</div>
-                                    <div class="col-md-4 user-basic-info">0</div>
-                                    <div class="col-md-4 user-basic-info">0</div>
+                                    <div class="col-md-4 user-basic-info">{{$user->answers_count}}</div>
+                                    <div class="col-md-4 user-basic-info">{{$user->questions_count}}</div>
+                                    <div class="col-md-4 user-basic-info">{{$user->followers_count}}</div>
                                 </div>
                             </div>
                             <div class="media-bottom padding-tb-0">
@@ -47,11 +47,15 @@
 
                     <div class="panel-body">
                         <ul class="list-group">
-
-                            <li class="list-group-item">
-                                <a href="#" class="content">【使用技巧】你可能并不知道的骚操作之 GitHub pages https</a>
-                                <span class="pull-right cm-meta"> 1 点赞 <span> ⋅ </span> 0 回复</span>
+                            @foreach($user->questions as $question)
+                            <li class="list-group-item media">
+                                <div class="media-heading">
+                                    <a href="#" class="content">{{$question->title}}</a>
+                                    <span class="pull-right cm-meta"> {{$question->followers_count}} 关注 <span> ⋅ </span> {{$question->answers_count}} 回复</span>
+                                </div>
+                                <div class="media-body">{!! $question->body !!}</div>
                             </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

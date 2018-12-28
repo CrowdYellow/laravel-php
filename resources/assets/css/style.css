@@ -179,3 +179,8 @@ a.topic:hover {
 .unread{
     background-color: #3097d14d !important;
 }
+
+.hidden-content{
+    height: 200px !important;
+    overflow: hidden !important;
+}

@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
-    public function __construct()
+    protected $userRepository;
+    public function __construct(UserRepository $userRepository)
     {
         $this->middleware('auth');
+        $this->userRepository = $userRepository;
     }
     /**
      * Display a listing of the resource.
@@ -31,6 +34,26 @@ class UserController extends Controller
         //
     }
 
+    public function photo()
+    {
+        return view('user.photos');
+    }
+
+    public function photoEdit(Request $request)
+    {
+        $file = $request->file('img');
+
+        $filename = md5(time().user()->id).'.'.$file->getClientOriginalExtension();
+
+        $file->move(public_path('photo'), $filename);
+
+        user()->photos = '/photo/'.$filename;
+
+        user()->save();
+
+        return ['url' => user()->photos];
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -50,7 +73,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return view('user.show');
+        $user = $this->userRepository->byId($id);
+        return view('user.show', compact('user'));
     }
 
     /**
@@ -61,7 +85,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('user.edit');
+        $user = $this->userRepository->byId($id);
+        return view('user.edit', compact('user'));
     }
 
     /**

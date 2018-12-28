@@ -30,6 +30,8 @@ Route::post('/questions/{question}/answer', 'Home\AnswerController@store');
 
 //用户区
 Route::resource('/users', 'Home\UserController');
+Route::get('/user/{id}/photo', 'Home\UserController@photo');
+Route::post('/user/photo', 'Home\UserController@photoEdit');
 
 //站内信
 Route::get('/notification/message', 'Home\NotificationController@message');

@@ -3,38 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            {{--侧边栏 start--}}
-            <div class="col-md-3">
-                <div class="box">
-                    <div class="padding-md ">
-                        <div class="list-group text-center">
-                            <a href="{{url('users/1/edit')}}" class="list-group-item active">
-                                <i class="fa fa-list-alt" aria-hidden="true"></i>
-                                &nbsp;个人信息
-                            </a>
-                            <a href="{{url('users/1/avatar')}}" class="list-group-item ">
-                                <i class="fa fa-picture-o" aria-hidden="true"></i>
-                                &nbsp;修改头像
-                            </a>
-                            <a href="https://laravel-china.org/users/31393/edit_email_notify" class="list-group-item ">
-                                <i class="fa fa-bell" aria-hidden="true"></i>
-                                &nbsp;消息通知
-                            </a>
-                            <a href="https://laravel-china.org/users/31393/edit_social_binding" class="list-group-item ">
-                                <i class="fa fa-flask" aria-hidden="true"></i>
-                                &nbsp;账号绑定
-                            </a>
-                            <a href="https://laravel-china.org/users/31393/edit_password" class="list-group-item ">
-                                <i class="fa fa-lock" aria-hidden="true"></i>
-                                &nbsp;修改密码
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            {{--侧边栏 end--}}
-
+            @include('.user.nav')
             {{--主体部分 start--}}
             <div class="col-md-9">
                 <div class="panel panel-default padding-md">
@@ -52,7 +21,7 @@
                             <div class="form-group">
                                 <label for="" class="col-sm-2 control-label">用户名</label>
                                 <div class="col-sm-6">
-                                    <input class="form-control" name="name" type="text" value="crowdYellow">
+                                    <input class="form-control" name="name" type="text" value="{{$user->name}}">
                                 </div>
 
                                 <div class="col-sm-4 help-block">

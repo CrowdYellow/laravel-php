@@ -38,6 +38,11 @@ class User extends Authenticatable
         (new UserMailer())->passwordReset($this->email, $token);
     }
 
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
+
     /**
      * 判断问题是否属于该用户
      *

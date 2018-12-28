@@ -12,6 +12,15 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <script>
+        @if(Auth::check())
+            window.Yuanwei = {
+            name:"{{user()->name}}",
+            photos:"{{user()->photos}}",
+            token: "{{ csrf_token() }}"
+        };
+        @endif
+    </script>
 
 </head>
 <body>
@@ -65,10 +74,7 @@
                             </li>
                             <li class="dropdown">
                                 <a href="{{url('/notification/notification')}}">
-                                    <span class="badge badge-fade popover-with-html">
-                                        <?php var_dump(user()->notifications[0]['read_at']); ?>
-                                        {{--{{count(user()->notifications)}}--}}
-                                    </span>
+                                    <span class="badge badge-fade popover-with-html">0</span>
                                 </a>
                             </li>
                             <li class="dropdown">
@@ -79,7 +85,7 @@
                                     <li class="list-group-item"><a href="#"><i class="fa fa-newspaper-o"></i> 我的博客</a></li>
                                     <li class="list-group-item"><a href="#"><i class="fa fa-heart"></i> 我的收藏</a></li>
                                     <li class="list-group-item"><a href="{{url('/users/1')}}"><i class="fa fa-user"></i> 个人中心</a></li>
-                                    <li class="list-group-item"><a href="#"><i class="fa fa-cog"></i> 编辑资料</a></li>
+                                    <li class="list-group-item"><a href="{{url('users/1/edit')}}"><i class="fa fa-cog"></i> 编辑资料</a></li>
                                     <li class="list-group-item">
                                         <a href="{{ route('logout') }}"
                                            onclick="event.preventDefault();

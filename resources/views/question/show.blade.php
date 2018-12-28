@@ -42,7 +42,7 @@
 
                 <div class="panel panel-default col-md-offset-1 triangle">
                     <div class="panel-heading"><h4 class="media-heading"><a href="#">{{ $answer->user->name }}</a></h4></div>
-                    <div class="panel-body">
+                    <div class="panel-body hidden-content">
                         <div class="media">
                             <div class="media-left">
                                 <user-votes-button answer="{{$answer->id}}" count="{{$answer->votes_count}}"></user-votes-button>
@@ -53,6 +53,7 @@
                             <div class="media-bottom"><a href="#">0评论</a></div>
                         </div>
                     </div>
+                    <div class="text-center" onclick="$(this).addClass('hidden').siblings().removeClass('hidden-content');" style="box-shadow:0 -2px 3px -1px #fff;line-height: 30px;cursor: pointer;"><a href="javascript:;">展开阅读全文</a><i class="fa fa-sort-desc"></i></div>
                 </div>
                 @endforeach
                 {{--回答区域 end--}}

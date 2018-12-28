@@ -19,6 +19,8 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "font-awesome": "^4.7.0"
+        "babel-polyfill": "^6.26.0",
+        "font-awesome": "^4.7.0",
+        "vue-image-crop-upload": "^2.5.0"
     }
 }
