@@ -29,9 +29,12 @@ Route::resource('/questions','Home\QuestionController', ['name' => [
 Route::post('/questions/{question}/answer', 'Home\AnswerController@store');
 
 //用户区
-Route::resource('/users', 'Home\UserController');
-Route::get('/user/{id}/photo', 'Home\UserController@photo');
-Route::post('/user/photo', 'Home\UserController@photoEdit');
+Route::get('/users/{id}', 'Home\UserInfoController@userInfo');
+Route::get('/users/{id}/edit', 'Home\UserInfoController@userEdit');
+Route::get('/users/{id}/photo', 'Home\UserInfoController@userPhoto');
+Route::post('/users/photos', 'Home\UserInfoController@photoEdit');
+Route::get('/users/{id}/password', 'Home\UserInfoController@userPassword');
+Route::post('/users/{id}/password', 'Home\UserInfoController@passwordEdit');
 
 //站内信
 Route::get('/notification/message', 'Home\NotificationController@message');

@@ -56682,7 +56682,7 @@ var render = function() {
           field: "img",
           width: 300,
           height: 300,
-          url: "/user/photo",
+          url: "/users/photos",
           params: _vm.params,
           headers: _vm.headers,
           "img-format": "png"

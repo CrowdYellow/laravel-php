@@ -7,11 +7,11 @@
                     <i class="fa fa-list-alt" aria-hidden="true"></i>
                     &nbsp;个人信息
                 </a>
-                <a href="{{url('user/'.user()->id.'/photo')}}" class="list-group-item ">
+                <a href="{{url('users/'.user()->id.'/photo')}}" class="list-group-item ">
                     <i class="fa fa-picture-o" aria-hidden="true"></i>
                     &nbsp;修改头像
                 </a>
-                <a href="{{url('user/'.user()->id.'/password')}}" class="list-group-item ">
+                <a href="{{url('users/'.user()->id.'/password')}}" class="list-group-item ">
                     <i class="fa fa-lock" aria-hidden="true"></i>
                     &nbsp;修改密码
                 </a>

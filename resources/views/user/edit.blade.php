@@ -14,14 +14,14 @@
                         <hr>
 
 
-                        <form class="form-horizontal" method="POST" action="{{url('users/1')}}" accept-charset="UTF-8" enctype="multipart/form-data">
+                        <form class="form-horizontal" method="POST" action="" accept-charset="UTF-8" enctype="multipart/form-data">
                             {{csrf_field()}}
                             {{method_field('PUT')}}
 
                             <div class="form-group">
                                 <label for="" class="col-sm-2 control-label">用户名</label>
                                 <div class="col-sm-6">
-                                    <input class="form-control" name="name" type="text" value="{{$user->name}}">
+                                    <input class="form-control" name="name" type="text" value="{{user()->name}}">
                                 </div>
 
                                 <div class="col-sm-4 help-block">

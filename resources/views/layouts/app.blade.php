@@ -84,8 +84,8 @@
                                 <ul class="dropdown-menu">
                                     <li class="list-group-item"><a href="#"><i class="fa fa-newspaper-o"></i> 我的博客</a></li>
                                     <li class="list-group-item"><a href="#"><i class="fa fa-heart"></i> 我的收藏</a></li>
-                                    <li class="list-group-item"><a href="{{url('/users/1')}}"><i class="fa fa-user"></i> 个人中心</a></li>
-                                    <li class="list-group-item"><a href="{{url('users/1/edit')}}"><i class="fa fa-cog"></i> 编辑资料</a></li>
+                                    <li class="list-group-item"><a href="{{url('/users/'.user()->id)}}"><i class="fa fa-user"></i> 个人中心</a></li>
+                                    <li class="list-group-item"><a href="{{url('users/'.user()->id.'/edit')}}"><i class="fa fa-cog"></i> 编辑资料</a></li>
                                     <li class="list-group-item">
                                         <a href="{{ route('logout') }}"
                                            onclick="event.preventDefault();

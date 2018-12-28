@@ -7,7 +7,7 @@
                    v-model="show"
                    :width="300"
                    :height="300"
-                   url="/user/photo"
+                   url="/users/photos"
                    :params="params"
                    :headers="headers"
                    img-format="png"></my-upload>
