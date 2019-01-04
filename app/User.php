@@ -6,6 +6,7 @@ use App\Mailer\UserMailer;
 use App\Model\Answer;
 use App\Model\Message;
 use App\Model\Question;
+use App\Model\Settings;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -20,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'confirmation_token', 'photos', 'api_token',
+        'name', 'email', 'password', 'confirmation_token', 'photos', 'api_token', 'settings',
     ];
 
     /**
@@ -31,6 +32,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected $casts = [
+        'settings' => 'array'
+    ];
+
+    public function settings()
+    {
+        return new Settings($this);
+    }
 
     //重置密码发送邮件
     public function sendPasswordResetNotification($token)

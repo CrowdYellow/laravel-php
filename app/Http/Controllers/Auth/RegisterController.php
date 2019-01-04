@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Mailer\UserMailer;
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -70,6 +72,7 @@ class RegisterController extends Controller
             'confirmation_token' => str_random(40),
             'password' => bcrypt($data['password']),
             'api_token' => str_random(60),
+            'settings' => ["city" => ""],
         ]);
 
         $this->sendVerifyEmailTo($user);
@@ -80,5 +83,25 @@ class RegisterController extends Controller
     protected function sendVerifyEmailTo($user)
     {
         (new UserMailer())->welcome($user);
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        flash('注册成功,请尽快登录邮箱验证！','success');
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
     }
 }

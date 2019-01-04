@@ -31,6 +31,7 @@ Route::post('/questions/{question}/answer', 'Home\AnswerController@store');
 //用户区
 Route::get('/users/{id}', 'Home\UserInfoController@userInfo');
 Route::get('/users/{id}/edit', 'Home\UserInfoController@userEdit');
+Route::post('/users/{id}/edit', 'Home\UserInfoController@doUserEdit');
 Route::get('/users/{id}/photo', 'Home\UserInfoController@userPhoto');
 Route::post('/users/photos', 'Home\UserInfoController@photoEdit');
 Route::get('/users/{id}/password', 'Home\UserInfoController@userPassword');

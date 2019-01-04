@@ -3,15 +3,19 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Requests\ChangePasswordRequest;
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
 class UserInfoController extends Controller
 {
-    public function __construct()
+    protected $userInfoRepository;
+
+    public function __construct(UserRepository $userInfoRepository)
     {
         $this->middleware('auth');
+        $this->userInfoRepository = $userInfoRepository;
     }
 
     public function userInfo()
@@ -22,6 +26,13 @@ class UserInfoController extends Controller
     public function userEdit()
     {
         return view('user.edit');
+    }
+
+    public function doUserEdit(Request $request)
+    {
+        user()->settings()->merge($request->all());
+
+        return back();
     }
 
     public function userPhoto()

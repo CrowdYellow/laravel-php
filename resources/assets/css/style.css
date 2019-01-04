@@ -76,12 +76,6 @@ a.topic:hover {
     color: #00B5AD !important;
 }
 
-.navbar-default {
-    background-color: #fff;
-    border-color: #d3e0e9;
-    border-top: 4px solid #3097D1 !important;
-}
-
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
     color: #3097D1 !important;
     background-color: #fff !important;

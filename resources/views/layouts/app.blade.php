@@ -25,6 +25,7 @@
 </head>
 <body>
     <div id="app">
+        <div style="width: 100%;height: 3px;background: url('/images/top-bar.png') top"></div>
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -104,12 +105,19 @@
                 </div>
             </div>
         </nav>
-
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    @include('flash::message')
+                </div>
+            </div>
+        </div>
         @yield('content')
     </div>
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}"></script>
+    <script>$('div.alert').not('.alert-important').delay(3000).fadeOut(350);</script>
     @yield('js')
 </body>
 </html>

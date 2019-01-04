@@ -53,7 +53,7 @@
                             <div class="media-bottom"><a href="#">0评论</a></div>
                         </div>
                     </div>
-                    <div class="text-center" onclick="$(this).addClass('hidden').siblings().removeClass('hidden-content');" style="box-shadow:0 -2px 3px -1px #fff;line-height: 30px;cursor: pointer;"><a href="javascript:;">展开阅读全文</a><i class="fa fa-sort-desc"></i></div>
+                    <div class="text-center" onclick="$(this).addClass('hidden').siblings().removeClass('hidden-content');" style="box-shadow:0 -2px 3px -1px #fff;line-height: 30px;cursor: pointer;"><a href="javascript:">展开阅读全文</a><i class="fa fa-sort-desc"></i></div>
                 </div>
                 @endforeach
                 {{--回答区域 end--}}
