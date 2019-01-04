@@ -48845,8 +48845,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
  // es6 shim
 
@@ -56680,8 +56678,6 @@ var render = function() {
       _c("my-upload", {
         attrs: {
           field: "img",
-          width: 300,
-          height: 300,
           url: "/users/photos",
           params: _vm.params,
           headers: _vm.headers,

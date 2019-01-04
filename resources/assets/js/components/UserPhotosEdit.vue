@@ -5,8 +5,6 @@
                    @crop-upload-success="cropUploadSuccess"
                    @crop-upload-fail="cropUploadFail"
                    v-model="show"
-                   :width="300"
-                   :height="300"
                    url="/users/photos"
                    :params="params"
                    :headers="headers"
